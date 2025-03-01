@@ -776,7 +776,11 @@ module.exports = grammar({
 // #endregion operand
 //#endregion source_line
 
-    comment: $ => /;(\\\r?\n|.)*/,
+    comment: $ => seq(
+      field("symbol", ';'),
+      field("content", /(?:\\\r?\n|.)*/)
+    ),
+
     // note: `@bidoof` sould not be valid as per the doc (same with `$@bidoof`)
     word: $ => prec(-5, /\$?[A-Za-z._?][A-Za-z0-9_$#@~.?]*/),
 
