@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "nasm",
   "rules": {
     "source_file": {
@@ -727,7 +728,7 @@
                     "type": "ALIAS",
                     "content": {
                       "type": "PATTERN",
-                      "value": "(\\\\\\r?\\n|[^;\\n])*"
+                      "value": "(\\\\\\r?\\n|[^;\\r\\n])*"
                     },
                     "named": true,
                     "value": "preproc_arg"
@@ -881,7 +882,7 @@
             "type": "ALIAS",
             "content": {
               "type": "PATTERN",
-              "value": "(\\\\\\r?\\n|[^;\\n])*"
+              "value": "(\\\\\\r?\\n|[^;\\r\\n])*"
             },
             "named": true,
             "value": "preproc_arg"
@@ -6236,8 +6237,25 @@
       ]
     },
     "comment": {
-      "type": "PATTERN",
-      "value": ";(\\\\\\r?\\n|.)*"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "symbol",
+          "content": {
+            "type": "STRING",
+            "value": ";"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "content",
+          "content": {
+            "type": "PATTERN",
+            "value": "(?:\\\\\\r?\\n|.)*"
+          }
+        }
+      ]
     },
     "word": {
       "type": "PREC",
@@ -6278,6 +6296,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-

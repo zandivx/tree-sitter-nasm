@@ -1361,6 +1361,22 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {
+      "symbol": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "conditional_expression",
     "named": true,
     "fields": {
@@ -3486,6 +3502,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {
       "filename": {
         "multiple": true,
@@ -4039,6 +4056,10 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -4116,10 +4137,6 @@
   },
   {
     "type": "assembl_directive_warning",
-    "named": true
-  },
-  {
-    "type": "comment",
     "named": true
   },
   {
